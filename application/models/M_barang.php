@@ -7,4 +7,9 @@ class M_barang extends CI_Model
     {
         return $this->db->get($table);
     }
+
+    function tambahAll($table, $data)
+    {
+        return $this->db->insert($table, $data);
+    }
 }

@@ -1,6 +1,6 @@
 <div class="container mt-3">
     <h3>Daftar Barang</h3>
-    <button class="btn btn-success">Tambah Data</button>
+    <a class="btn btn-success" href="<?= base_url('home/tambah'); ?>">Tambah Data</a>
     <table class="table table-bordered table-striped mt-3 mx-auto">
         <thead>
             <tr class="text-center">
