@@ -60,7 +60,7 @@
                     <input type="hidden" name="id" id="id" value="<?= $d->id_barang; ?>">
                     <div class="form-group">
                         <label class="font-weight-bold" for="stok">Stok</label>
-                        <input type="text" class="form-control" id="stok" name="stok" placeholder="Masukkan stok..." autocomplete="off">
+                        <input type="text" class="form-control-plaintext" id="stok" name="stok" placeholder="Masukkan stok..." autocomplete="off" readonly>
                         <?= form_error('stok'); ?>
                     </div>
                     <div class="form-group">
@@ -80,6 +80,7 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable();
+
         $('#tambahStok').on('show.bs.modal', function(event) {
             var div = $(event.relatedTarget);
             var modal = $(this);
