@@ -26,14 +26,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active px-3">
+                    <li class="<?= ($this->uri->segment(1) == 'home' ? 'nav-item active px-3' : 'nav-item px-3'); ?>">
                         <a class="nav-link" href="<?= site_url('home'); ?>">Barang</a>
                     </li>
-                    <li class="nav-item active px-3">
+                    <li class="<?= ($this->uri->segment(1) == 'supplier' ? 'nav-item active px-3' : 'nav-item px-3'); ?>">
                         <a class="nav-link" href="<?= site_url('supplier'); ?>">Supplier</a>
                     </li>
-                    <li class="nav-item active px-3">
-                        <a class="nav-link" href="<?= site_url('penjualan'); ?>">Penjualan</a>
+                    <li class="<?= ($this->uri->segment(1) == 'transaksi' ? 'nav-item active px-3' : 'nav-item px-3'); ?>">
+                        <a class="nav-link" href="<?= site_url('transaksi'); ?>">Transaksi</a>
                     </li>
                 </ul>
             </div>
