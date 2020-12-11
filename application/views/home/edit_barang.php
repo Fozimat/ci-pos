@@ -26,6 +26,6 @@
             <textarea class="form-control" id="keterangan" rows="3" name="keterangan"><?= $data->keterangan; ?></textarea>
             <?= form_error('keterangan'); ?>
         </div>
-        <button type="submit" class="btn btn-primary">Edit</button>
+        <button type="submit" class="btn btn-primary mb-3">Edit</button>
     </form>
 </div>

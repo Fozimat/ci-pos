@@ -13,6 +13,7 @@ class Home extends CI_Controller
     {
         $data['title'] = 'Daftar Barang';
         $data['data'] = $this->m_barang->getAll('tb_barang');
+
         $this->load->view('template/header', $data);
         $this->load->view('home/tampil_barang', $data);
         $this->load->view('template/footer');
@@ -74,7 +75,7 @@ class Home extends CI_Controller
     public function edit($id)
     {
         $valid = $this->form_validation;
-        $valid->set_rules('kode_barang', 'Kode Barang', 'required');
+        $valid->set_rules('kode_barang', 'Kode Barang', 'required|edit_unique[tb_barang.kode_barang. ' . $id . ']');
         $valid->set_rules('nama_barang', 'Nama Barang', 'required|min_length[3]');
         $valid->set_rules('harga', 'Harga', 'required|integer');
         $valid->set_rules('stok', 'Stok', 'required|integer');
@@ -86,6 +87,7 @@ class Home extends CI_Controller
         $valid->set_message('integer', '{field} harus berupa angka');
         $valid->set_message('min_length', '{field} minimal 3 karakter');
         $valid->set_message('is_unique', '{field} tidak boleh sama');
+        $valid->set_message('edit_unique', '{field} harus unik');
 
         $where = [
             'id_barang' => $id
@@ -113,9 +115,40 @@ class Home extends CI_Controller
                 'keterangan' => $keterangan
             ];
 
-            $this->m_barang->editData('tb_barang', $data, $where);
+            $cek = $this->m_barang->editData('tb_barang', $data, $where);
             $this->session->set_flashdata('flash', 'diedit');
             redirect('home');
         }
     }
+
+    public function tambahStok()
+    {
+        $stok = $this->input->post('stok');
+        $stok_baru = $this->input->post('stok_baru');
+
+        $update_stok = $stok + $stok_baru;
+        $where = [
+            'id_barang' => $this->input->post('id')
+        ];
+
+        $data = [
+            'stok' => $update_stok
+        ];
+        $this->m_barang->tambahStokBarang('tb_barang', $data, $where);
+        $this->session->set_flashdata('flash', 'ditambahkan');
+        redirect('home');
+    }
 }
+
+// debug
+
+// 1
+// print_r($update_stok);
+// die();
+
+// 2
+// $query = $this->m_barang->getAll('tb_barang')->result();
+// echo '<pre>';
+// var_dump($query);
+// echo '</pre>';
+// die();

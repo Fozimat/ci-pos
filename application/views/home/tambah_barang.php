@@ -26,6 +26,6 @@
             <textarea class="form-control" id="keterangan" rows="3" name="keterangan"><?= set_value('keterangan'); ?></textarea>
             <?= form_error('keterangan'); ?>
         </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="submit" class="btn btn-primary mb-3">Simpan</button>
     </form>
 </div>

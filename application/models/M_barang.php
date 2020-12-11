@@ -28,4 +28,10 @@ class M_barang extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    function tambahStokBarang($table, $data, $where)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 }
